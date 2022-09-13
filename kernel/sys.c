@@ -2788,3 +2788,9 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
 	return 0;
 }
 #endif /* CONFIG_COMPAT */
+
+SYSCALL_DEFINE0(my_hello){
+	struct task_struct* task = get_current();
+	set_task_comm(task, "my_hello");
+	return 123;
+}
